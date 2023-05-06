@@ -274,44 +274,34 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="username" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Component id="userphone" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <Component id="useraddress" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="registertime" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="usereditButton" min="-2" pref="106" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="useraddUserButton" min="-2" pref="110" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="userdeleteButton" min="-2" pref="106" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <Component id="usersaveButton" min="-2" pref="110" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Component id="usernameTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="userphoneTextfield" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="useraddressTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="usertimeTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Component id="username" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="userphone" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="useraddress" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="registertime" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="useridcard" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="usernameTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="useridcardTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="userphoneTextfield" alignment="0" max="32767" attributes="0"/>
+                              <Component id="useraddressTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="usertimeTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="usereditButton" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="useraddUserButton" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="useridcard" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="useridcardTextfield" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="userdeleteButton" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="usersaveButton" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -650,9 +640,11 @@
                                       <Component id="cardlevelbox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="cardnameTextfield" alignment="1" max="32767" attributes="0"/>
                                       <Component id="cardphoneTextfield" alignment="0" pref="300" max="32767" attributes="0"/>
-                                      <Component id="enddaySpinner" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="begindaySpinner" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
                                       <Component id="idcardTextfield" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="enddaySpinner" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="begindaySpinner" alignment="0" pref="152" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -878,7 +870,7 @@
                           <Component id="jPanel12" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="starttime" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1058,31 +1050,31 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="endtime" min="-2" pref="98" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="endtimeTextfield" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="begintime" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="timeusercardlevel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="timename" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <Component id="timeidcard" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="begintimeTextfield" max="32767" attributes="0"/>
-                                      <Component id="timeidcardTextlield" alignment="0" pref="300" max="32767" attributes="0"/>
-                                      <Component id="nameTextfield2" alignment="0" pref="300" max="32767" attributes="0"/>
-                                      <Component id="jComboBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="endtime" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="begintime" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="timeusercardlevel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="timename" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="timeidcard" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="10" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="timeidcardTextlield" alignment="0" pref="300" max="32767" attributes="0"/>
+                              <Component id="nameTextfield2" alignment="0" pref="300" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="endtimeSpinner" alignment="0" pref="140" max="32767" attributes="0"/>
+                                      <Component id="jComboBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="begintimeSpinner" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1107,14 +1099,14 @@
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="begintime" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="begintimeTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="begintimeSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="endtime" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="endtimeTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="endtimeSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1159,21 +1151,28 @@
                     <Property name="text" type="java.lang.String" value="Th&#x1edd;i Gian &#x110;&#x1ebf;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="begintimeTextfield">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="begintimeTextfieldActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="endtime">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Th&#x1edd;i Gian &#x110;i"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="endtimeTextfield">
-                </Component>
                 <Component class="javax.swing.JLabel" name="timeidcard">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="begintimeSpinner">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1672547160000" stepSize="6" type="date"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="endtimeSpinner">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1675311960000" stepSize="5" type="date"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1438,44 +1437,40 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="emplphone" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                          <Component id="empladdress" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                          <Component id="emplworktime" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="emplid" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="empleditButton" min="-2" pref="106" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="empladdButton" min="-2" pref="110" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="empldeleteButton" min="-2" pref="106" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                                      <Component id="emplsaveButton" min="-2" pref="110" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="emplidTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="emplphone" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="empladdress" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="emplworktime" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emplid" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="emplname" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="empleditButton" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="empladdButton" min="-2" pref="110" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="emplnameTextfield" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="emplphoneTextfield" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="empladdressTextfiled" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="empldeleteButton" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                              <Component id="emplsaveButton" min="-2" pref="110" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="emplworktimeBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="emplidTextfield" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="emplname" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="emplnameTextfield" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="emplphoneTextfield" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="empladdressTextfiled" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="emplworktimeBox" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="19" max="32767" attributes="0"/>
                           </Group>
@@ -1488,18 +1483,12 @@
                                   <Component id="emplidTextfield" min="-2" max="-2" attributes="0"/>
                                   <Component id="emplid" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace pref="25" max="32767" attributes="0"/>
-                                      <Component id="emplname" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="emplnameTextfield" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="emplnameTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emplname" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace pref="19" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="emplphoneTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="emplphone" alignment="3" min="-2" max="-2" attributes="0"/>
