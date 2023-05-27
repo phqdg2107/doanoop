@@ -5,7 +5,9 @@
 
 package doanoop;
 
+import java.sql.*;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,8 +112,30 @@ public class signinframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new mainframe().setVisible(true);
+        //ngt son
+        ConnectDB cn = new ConnectDB();
+        Connection con = null;
+        try{
+            con = cn.getConnection();
+            String sql = "Select * From DangNhap Where User=? and Pwd=?";
+            PreparedStatement pst = con.prepareCall(sql);
+            pst.setString(1,jTextField1.getText());
+            pst.setString(2,jPasswordField1.getText());
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                 Mainframe m = new Mainframe();
+                 m.show();
+                 this.hide();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Sai thông tin đăng nhập");
+                 }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
+        
+        
+        new Mainframe().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
