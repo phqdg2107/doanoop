@@ -49,6 +49,10 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTabbedPane1FocusGained"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane1MouseClicked"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -63,6 +67,10 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanel1FocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanel1FocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Th&#xf4;ng Tin H&#x1ed9;i Vi&#xea;n">
@@ -186,16 +194,22 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="8">
-                        <Column editable="true" title="H&#x1ecd; T&#xea;n " type="java.lang.String"/>
-                        <Column editable="true" title="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
-                        <Column editable="true" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
-                        <Column editable="true" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.String"/>
-                        <Column editable="true" title="Ng&#xe0;y &#x110;&#x103;ng K&#xfd; Th&#x1ebb;" type="java.lang.String"/>
+                        <Column editable="false" title="H&#x1ecd; T&#xea;n " type="java.lang.String">
+                          <Data value=""/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                          <Data value="null"/>
+                        </Column>
+                        <Column editable="false" title="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
+                        <Column editable="false" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
+                        <Column editable="false" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.String"/>
+                        <Column editable="false" title="Ng&#xe0;y &#x110;&#x103;ng K&#xfd; Th&#x1ebb;" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -227,9 +241,6 @@
                         </Column>
                       </TableColumnModel>
                     </Property>
-                    <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="aa" green="78" red="0" type="rgb"/>
-                    </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
@@ -237,6 +248,7 @@
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTable1FocusLost"/>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+                    <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jTable1ComponentShown"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -299,6 +311,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="usersearchTextfield">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usersearchTextfieldKeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="usersearchButton">
                   <Properties>
@@ -638,6 +653,7 @@
                 <Component class="javax.swing.JTextField" name="cardsearchTextfield">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cardsearchTextfieldActionPerformed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cardsearchTextfieldKeyReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="cardsearchButton">
@@ -1214,6 +1230,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="timesearchTextfield">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="timesearchTextfieldKeyReleased"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="timesearchButton">
                       <Properties>
@@ -1552,11 +1571,11 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="8">
-                            <Column editable="true" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.String"/>
-                            <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.String"/>
-                            <Column editable="true" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
-                            <Column editable="true" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.String"/>
-                            <Column editable="true" title="Ca L&#xe0;m" type="java.lang.String"/>
+                            <Column editable="false" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.String"/>
+                            <Column editable="false" title="H&#x1ecd; T&#xea;n" type="java.lang.String"/>
+                            <Column editable="false" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
+                            <Column editable="false" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.String"/>
+                            <Column editable="false" title="Ca L&#xe0;m" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1655,6 +1674,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="emplsearchTextfield">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="emplsearchTextfieldKeyReleased"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="emplsearchButton">
                       <Properties>

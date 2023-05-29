@@ -6,7 +6,6 @@
 package doanoop;
 
 import java.sql.*;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 
 /**
@@ -117,7 +116,7 @@ public class signinframe extends javax.swing.JFrame {
         Connection con = null;
         try{
             con = cn.getConnection();
-            String sql = "Select * From DangNhap Where User=? and Pwd=?";
+            String sql = "Select * From DangNhap Where Username=? and Password=?";
             PreparedStatement pst = con.prepareCall(sql);
             pst.setString(1,jTextField1.getText());
             pst.setString(2,jPasswordField1.getText());
@@ -133,9 +132,6 @@ public class signinframe extends javax.swing.JFrame {
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(this, ex.toString());
         }
-        
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
