@@ -1700,7 +1700,7 @@ public class Mainframe extends javax.swing.JFrame {
                     int kq = st.executeUpdate(sql);
                     if(kq > 0){
                         JOptionPane.showMessageDialog(this,"Thêm nhân viên mới thành công");
-                        reloadTableKH();
+                        reloadTableNV();
                     }    
                     st.close();
                 }
@@ -1727,7 +1727,7 @@ public class Mainframe extends javax.swing.JFrame {
             userphoneTextfield.setText(jTable1.getValueAt(x,2) + "");
             useraddressTextfield.setText(jTable1.getValueAt(x,3) + "");
             usertimeTextfield.setText(jTable1.getValueAt(x,4) + "");
-            usernameTextfield.setEnabled(false);
+            
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -1813,7 +1813,7 @@ public class Mainframe extends javax.swing.JFrame {
                 int kq = st.executeUpdate(sql);
                 if (kq>=0){
                     JOptionPane.showMessageDialog(this, "Cập nhật thành công");
-                    reloadTableKH();
+                    reloadTableNV();
                 }
                 st.close();
                 }
@@ -1832,7 +1832,7 @@ public class Mainframe extends javax.swing.JFrame {
             int check = JOptionPane.showConfirmDialog(this, "xác nhận xóa?","Thông báo",JOptionPane.YES_NO_OPTION);
             if (check == JOptionPane.YES_OPTION){
                 st.executeUpdate(sql);
-                reloadTableKH();
+                reloadTableNV();
                 JOptionPane.showMessageDialog(this, "Đã xóa nhân viên khỏi danh sách");
                 
             }
@@ -1853,7 +1853,7 @@ public class Mainframe extends javax.swing.JFrame {
             emplphoneTextfield.setText(jTable3.getValueAt(x,2) + "");
             empladdressTextfield.setText(jTable3.getValueAt(x,3) + "");
             emplworktimeBox.setSelectedItem(jTable3.getValueAt(x,4) + "");
-            emplidTextfield.setEnabled(false);
+            
         }
     }//GEN-LAST:event_jTable3MouseClicked
 
