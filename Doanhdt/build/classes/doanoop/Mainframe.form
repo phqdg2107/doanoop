@@ -195,17 +195,8 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="8">
-                        <Column editable="false" title="H&#x1ecd; T&#xea;n " type="java.lang.String">
-                          <Data value=""/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                          <Data value="null"/>
-                        </Column>
+                      <Table columnCount="5" rowCount="0">
+                        <Column editable="false" title="H&#x1ecd; T&#xea;n " type="java.lang.String"/>
                         <Column editable="false" title="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
                         <Column editable="false" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
                         <Column editable="false" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.String"/>
@@ -684,7 +675,7 @@
                 <Component class="javax.swing.JTable" name="jTable2">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="8">
+                      <Table columnCount="6" rowCount="0">
                         <Column editable="true" title="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
                         <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.String"/>
                         <Column editable="true" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
@@ -734,6 +725,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable2MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -907,6 +901,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a Th&#x1ebb; H&#x1ed9;i Vi&#xea;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteusercardButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -1065,7 +1062,7 @@
                 <Component class="javax.swing.JTable" name="timeTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="8">
+                      <Table columnCount="5" rowCount="0">
                         <Column editable="true" title="M&#xe3; Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
                         <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.String"/>
                         <Column editable="true" title="Lo&#x1ea1;i Th&#x1ebb; H&#x1ed9;i Vi&#xea;n" type="java.lang.String"/>
@@ -1106,6 +1103,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="timeTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1283,7 +1283,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="nameTextfield2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="timeidcardTextlield" alignment="0" pref="300" max="32767" attributes="0"/>
+                                      <Component id="timeidcardTextfield" alignment="0" pref="300" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1296,7 +1296,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="timeidcardTextlield" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="timeidcardTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="timeidcard" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1338,9 +1338,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTextfield2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="timeidcardTextlield">
+                <Component class="javax.swing.JTextField" name="timeidcardTextfield">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeidcardTextlieldActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeidcardTextfieldActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="timeusercardlevel">
@@ -1570,7 +1570,7 @@
                     <Component class="javax.swing.JTable" name="jTable3">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="8">
+                          <Table columnCount="5" rowCount="0">
                             <Column editable="false" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.String"/>
                             <Column editable="false" title="H&#x1ecd; T&#xea;n" type="java.lang.String"/>
                             <Column editable="false" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.String"/>
@@ -1585,7 +1585,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>

@@ -5,11 +5,8 @@
 package doanoop;
 
 import java.sql.*;
-import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -26,6 +23,9 @@ public class Mainframe extends javax.swing.JFrame {
         initComponents();
         dbToTableHV();
         dbToTableNV();
+        dbToTableThe();
+        dbToTableTG();
+        
         
     }
 
@@ -45,81 +45,164 @@ public class Mainframe extends javax.swing.JFrame {
     
     //ham in dl len bang
     public void dbToTableHV(){
-        try{
+//        try{
+//            con = cn.getConnection();
+//            int number;
+//            Vector row;
+//            String sql = "select * from hoivien";
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            ResultSetMetaData metadata = rs.getMetaData();
+//            number = metadata.getColumnCount(); 
+//            tbHV.setRowCount(0);
+//            
+//            while(rs.next()){
+//                row = new Vector();
+//                for(int i = 1; i <= number; i++)
+//                    row.addElement(rs.getString(i));
+//                tbHV.addRow(row);
+//                jTable1.setModel(tbHV);
+//            }
+//            st.close();
+//            rs.close();
+//            con.close();
+//        }catch(Exception e){
+//        }
+//        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                if(jTable1.getSelectedRow() >= 0){
+//                    usernameTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),0) + "");
+//                    useridcardTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1) + "");
+//                    userphoneTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2) + "");
+//                    useraddressTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),3) + "");
+//                    usertimeTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),4) + "");
+//                }
+//            }
+//        });   
+    try {
             con = cn.getConnection();
-            int number;
-            Vector row;
-            String sql = "select * from hoivien";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            ResultSetMetaData metadata = rs.getMetaData();
-            number = metadata.getColumnCount(); 
-            tbHV.setRowCount(0);
-            
+            PreparedStatement ps = con.prepareStatement("Select * from HoiVien");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                row = new Vector();
-                for(int i = 1; i <= number; i++)
-                    row.addElement(rs.getString(i));
-                tbHV.addRow(row);
-                jTable1.setModel(tbHV);
+                String hoten = rs.getString("hoten");
+                String MaThe = rs.getString("MaThe");
+                String sdt = rs.getString("sdt");
+                String diachi = rs.getString("diachi");
+                String ngayDK = rs.getString("ngayDK");
+                
+                Object[] obj={hoten,MaThe,sdt,diachi,ngayDK};
+                model = (DefaultTableModel) jTable1.getModel();
+                model.addRow(obj);
+                
             }
-            st.close();
-            rs.close();
-            con.close();
-        }catch(Exception e){
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if(jTable1.getSelectedRow() >= 0){
-                    usernameTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),0) + "");
-                    useridcardTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),1) + "");
-                    userphoneTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2) + "");
-                    useraddressTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),3) + "");
-                    usertimeTextfield.setText(jTable1.getValueAt(jTable1.getSelectedRow(),4) + "");
-                }
-            }
-        });    
     }   
-    
     public void dbToTableNV(){
         
-        try{
+//        try{
+//            con = cn.getConnection();
+//            int number;
+//            Vector row;
+//            String sql = "select * from nhanvien";
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            ResultSetMetaData metadata = rs.getMetaData();
+//            number = metadata.getColumnCount(); 
+//            tbNV.setRowCount(0);
+//            
+//            while(rs.next()){
+//                row = new Vector();
+//                for(int i = 1; i <= number; i++)
+//                    row.addElement(rs.getString(i));
+//                tbNV.addRow(row);
+//                jTable3.setModel(tbNV);
+//            }
+//            st.close();
+//            rs.close();
+//            con.close();
+//        }catch(Exception e){
+//        }
+//        jTable3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                if(jTable3.getSelectedRow() >= 0){
+//                    emplidTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),0) + "");
+//                    emplnameTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),1) + "");
+//                    emplphoneTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),2) + "");
+//                    empladdressTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),3) + "");
+//                    emplworktimeBox.setSelectedItem(jTable3.getValueAt(jTable3.getSelectedRow(),4) + "");
+//                }
+//            }
+//        });
+        try {
             con = cn.getConnection();
-            int number;
-            Vector row;
-            String sql = "select * from nhanvien";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            ResultSetMetaData metadata = rs.getMetaData();
-            number = metadata.getColumnCount(); 
-            tbNV.setRowCount(0);
-            
+            PreparedStatement ps = con.prepareStatement("Select * from NhanVien");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                row = new Vector();
-                for(int i = 1; i <= number; i++)
-                    row.addElement(rs.getString(i));
-                tbNV.addRow(row);
-                jTable3.setModel(tbNV);
+                String MaNV = rs.getString("MaNV");
+                String tenNV = rs.getString("tenNV");
+                String sdt = rs.getString("sdt");
+                String diachi = rs.getString("diachi");
+                String calam = rs.getString("calam");
+                
+                Object[] obj={MaNV,tenNV,sdt,diachi,calam};
+                model = (DefaultTableModel) jTable3.getModel();
+                model.addRow(obj);
+                
             }
-            st.close();
-            rs.close();
-            con.close();
-        }catch(Exception e){
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        jTable3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if(jTable3.getSelectedRow() >= 0){
-                    emplidTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),0) + "");
-                    emplnameTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),1) + "");
-                    emplphoneTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),2) + "");
-                    empladdressTextfield.setText(jTable3.getValueAt(jTable3.getSelectedRow(),3) + "");
-                    emplworktimeBox.setSelectedItem(jTable3.getValueAt(jTable3.getSelectedRow(),4) + "");
-                }
+    }
+    public void dbToTableThe(){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("Select * from TheHoiVien");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String MaTheHV = rs.getString("MaTheHV");
+                String hoten = rs.getString("hoten");
+                String sdt = rs.getString("sdt");
+                String loaithe = rs.getString("loaithe");
+                String ngayDK = rs.getString("ngayDK");
+                String ngayHH = rs.getString("ngayHH");
+                
+                Object[] obj={MaTheHV,hoten,sdt,loaithe,ngayDK,ngayHH};
+                model = (DefaultTableModel) jTable2.getModel();
+                model.addRow(obj);
+                
             }
-        });
-        
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void dbToTableTG(){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("Select * from tgTap");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String MaTheHV = rs.getString("MaTheHV");
+                String hoten = rs.getString("hoten");
+                String loaithe = rs.getString("loaithe");
+                String tgDen = rs.getString("tgDen");
+                String tgDi = rs.getString("tgDi");
+                
+                Object[] obj={MaTheHV,hoten,loaithe,tgDen,tgDi};
+                model = (DefaultTableModel) timeTable.getModel();
+                model.addRow(obj);
+                
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -154,6 +237,180 @@ public class Mainframe extends javax.swing.JFrame {
         trs.setRowFilter(RowFilter.regexFilter(str));
         
     }
+    
+     //ham reload bang
+    private void reloadTableHV(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        dbToTableHV();
+    }
+    private void reloadTableNV(){
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        dbToTableNV();
+    }
+    private void reloadTableThe(){
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        dbToTableThe();
+    }
+    private void reloadTableTG(){
+        DefaultTableModel model = (DefaultTableModel) timeTable.getModel();
+        model.setRowCount(0);
+        dbToTableTG();
+        
+    }
+    
+    public void themNV(String tenNV,int MaNV, String sdt, String diachi, String calam){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into NhanVien values(?,?,?,?,?)");
+            ps.setString(1, tenNV);
+            ps.setInt(2,MaNV);
+            ps.setString(3,sdt);
+            ps.setString(4,diachi);
+            ps.setString(5,calam);
+                
+            int rowCount = ps.executeUpdate();
+            if(rowCount==1){
+            JOptionPane.showMessageDialog(this, "da them nhan vien");
+            reloadTableNV();
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "them khong thanh cong");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "them khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    public void suaNV(String tenNV,int MaNV, String sdt, String diachi, String calam){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("update NhanVien set tenNV=?,sdt=?,diachi=?,calam=? where MaNV=?");
+            ps.setString(1, tenNV);
+            
+            ps.setString(2,sdt);
+            ps.setString(3,diachi);
+            ps.setString(4,calam);
+            ps.setInt(5,MaNV);
+                
+            int rowCount = ps.executeUpdate();
+            if(rowCount==1){
+            JOptionPane.showMessageDialog(this, "da sua nhan vien");
+            reloadTableNV();
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "sua khong thanh cong");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "sua khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    public void xoaNV(int MaNV){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("delete from NhanVien where MaNV =?");
+            ps.setInt(1, MaNV);
+            int rowCount = ps.executeUpdate();
+            int check = JOptionPane.showConfirmDialog(this,"xac nhan xoa?","thong bao",JOptionPane.YES_NO_OPTION);
+            if(check==JOptionPane.YES_OPTION){
+               if(rowCount==1){
+                JOptionPane.showMessageDialog(this, "da xoa nhan vien");
+                reloadTableNV();
+                }
+                else{
+                JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+                } 
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    
+    public void themThe(int MaTheHV, String hoten, String sdt, String ngayDK, String ngayHH){
+         try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into TheHoiVien values(?,?,?,?,?)");
+            ps.setInt(1, MaTheHV);
+            ps.setString(2,hoten);
+            ps.setString(3,sdt);
+            ps.setString(4,ngayDK);
+            ps.setString(5,ngayHH);
+                
+            int rowCount = ps.executeUpdate();
+            if(rowCount==1){
+            JOptionPane.showMessageDialog(this, "da them the hoi vien");
+            reloadTableThe();
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "them khong thanh cong");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "them khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    public void xoaThe(int MaTheHV){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("delete from TheHoiVien where MaTheHV=?");
+            ps.setInt(1, MaTheHV);
+              
+            int rowCount = ps.executeUpdate();
+            int check = JOptionPane.showConfirmDialog(this, "xac nhan xoa?","thong bao",JOptionPane.YES_NO_OPTION);
+            if(check==JOptionPane.YES_OPTION){
+                if(rowCount==1){
+                JOptionPane.showMessageDialog(this, "da xoa the hoi vien");
+                reloadTableThe();
+                }
+                else{
+                JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+                
+                }  
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    
+    public void themTG(){}
+    public void xoaTG(){}
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -231,7 +488,7 @@ public class Mainframe extends javax.swing.JFrame {
         starttime = new javax.swing.JPanel();
         timename = new javax.swing.JLabel();
         nameTextfield2 = new javax.swing.JTextField();
-        timeidcardTextlield = new javax.swing.JTextField();
+        timeidcardTextfield = new javax.swing.JTextField();
         timeusercardlevel = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         begintime = new javax.swing.JLabel();
@@ -361,14 +618,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Họ Tên ", "Mã Thẻ Hội Viên", "Số Điện Thoại", "Địa Chỉ", "Ngày Đăng Ký Thẻ"
@@ -674,14 +924,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Thẻ Hội Viên", "Họ Tên", "Số Điện Thoại", "Loại Thẻ Hội Viên", "Ngày Đăng Ký", "Ngày Hết Hạn"
@@ -696,6 +939,11 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
         jTable2.setPreferredSize(new java.awt.Dimension(300, 160));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         jPanel10.setBackground(new java.awt.Color(253, 249, 239));
@@ -733,6 +981,11 @@ public class Mainframe extends javax.swing.JFrame {
         deleteusercardButton.setBackground(new java.awt.Color(60, 72, 107));
         deleteusercardButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteusercardButton.setText("Xóa Thẻ Hội Viên");
+        deleteusercardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteusercardButtonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setForeground(new java.awt.Color(60, 72, 107));
         jLabel8.setText("Số Điện Thoại");
@@ -879,14 +1132,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         timeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Thẻ Hội Viên", "Họ Tên", "Loại Thẻ Hội Viên", "Thời Gian Đến", "Thời Gian Đi"
@@ -898,6 +1144,11 @@ public class Mainframe extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        timeTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                timeTableMouseClicked(evt);
             }
         });
         jScrollPane5.setViewportView(timeTable);
@@ -998,9 +1249,9 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
-        timeidcardTextlield.addActionListener(new java.awt.event.ActionListener() {
+        timeidcardTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timeidcardTextlieldActionPerformed(evt);
+                timeidcardTextfieldActionPerformed(evt);
             }
         });
 
@@ -1046,7 +1297,7 @@ public class Mainframe extends javax.swing.JFrame {
                     .addGroup(starttimeLayout.createSequentialGroup()
                         .addGroup(starttimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(nameTextfield2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(timeidcardTextlield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                            .addComponent(timeidcardTextfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         starttimeLayout.setVerticalGroup(
@@ -1054,7 +1305,7 @@ public class Mainframe extends javax.swing.JFrame {
             .addGroup(starttimeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(starttimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(timeidcardTextlield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeidcardTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(timeidcard))
                 .addGap(18, 18, 18)
                 .addGroup(starttimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1141,14 +1392,7 @@ public class Mainframe extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Nhân Viên", "Họ Tên", "Số Điện Thoại", "Địa Chỉ", "Ca Làm"
@@ -1175,6 +1419,9 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
         jScrollPane8.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel16.setBackground(new java.awt.Color(253, 249, 239));
 
@@ -1649,27 +1896,12 @@ public class Mainframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void usersaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersaveButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usersaveButtonActionPerformed
 
-    //ham reload bang
-    private void reloadTableHV(){
-        usernameTextfield.setText("");
-        useridcardTextfield.setText("");
-        userphoneTextfield.setText("");
-        useraddressTextfield.setText("");
-        usertimeTextfield.setText("");
-        dbToTableHV();
-    }
-    private void reloadTableNV(){
-        emplidTextfield.setText("");
-        emplnameTextfield.setText("");
-        emplphoneTextfield.setText("");
-        empladdressTextfield.setText("");
-        emplworktimeBox.setSelectedItem("");
-        dbToTableNV();
-    }
+   
     
     
     
@@ -1691,12 +1923,10 @@ public class Mainframe extends javax.swing.JFrame {
             if(check>0){
                 JOptionPane.showMessageDialog(this, "them thanh cong");
                 reloadTableHV();
-            }
-            
-            
-            
+            }  
         } catch (Exception ex) {
             System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(this, "them khong thanh cong");
         }
     }//GEN-LAST:event_useraddUserButtonActionPerformed
 
@@ -1724,7 +1954,14 @@ public class Mainframe extends javax.swing.JFrame {
 
     
     private void addusercardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addusercardButtonActionPerformed
-        // TODO add your handling code here:
+        int MaTheHV = Integer.parseInt(idcardTextfield.getText());
+        String hoten = cardnameTextfield.getText();
+        String sdt = cardphoneTextfield.getText();
+        String ngayDK = begindaySpinner.getValue().toString();
+        String ngayHH = enddaySpinner.getValue().toString();
+        
+        themThe(MaTheHV,hoten,sdt,ngayDK,ngayHH);
+
     }//GEN-LAST:event_addusercardButtonActionPerformed
 
     
@@ -1736,9 +1973,9 @@ public class Mainframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTextfield2ActionPerformed
 
-    private void timeidcardTextlieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeidcardTextlieldActionPerformed
+    private void timeidcardTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeidcardTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_timeidcardTextlieldActionPerformed
+    }//GEN-LAST:event_timeidcardTextfieldActionPerformed
 
     private void empladdressTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empladdressTextfieldActionPerformed
         // TODO add your handling code here:
@@ -1748,7 +1985,7 @@ public class Mainframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emplidTextfieldActionPerformed
 
-    
+
     private void empladdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empladdButtonActionPerformed
 //nut them nhan vien        
 //ngt son
@@ -1757,8 +1994,8 @@ public class Mainframe extends javax.swing.JFrame {
             
             Connection con = cn.getConnection();
             PreparedStatement pst = con.prepareStatement("insert into NhanVien values(?,?,?,?,?)");
-            pst.setString(1, emplidTextfield.getText());
-            pst.setString(2, emplnameTextfield.getText());
+            pst.setString(1, emplnameTextfield.getText());
+            pst.setString(2, emplidTextfield.getText());
             pst.setString(3, emplphoneTextfield.getText());
             pst.setString(4, empladdressTextfield.getText());
             pst.setString(5, emplworktimeBox.getSelectedItem().toString());
@@ -1774,6 +2011,14 @@ public class Mainframe extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
+//dung neu dung ham themNV();
+//    String tenNV = emplnameTextfield.getText();
+//    int MaNV = Integer.parseInt(emplidTextfield.getText());
+//    String sdt = emplphoneTextfield.getText();
+//    String diachi = empladdressTextfield.getText();
+//    String calam = emplworktimeBox.getSelectedItem().toString();
+//    
+//    themNV(tenNV,MaNV,sdt,diachi,calam);
     }//GEN-LAST:event_empladdButtonActionPerformed
 
     
@@ -1795,38 +2040,19 @@ public class Mainframe extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jTable1MouseClicked
-
+    
     private void usereditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usereditButtonActionPerformed
 //nut sua khach hang        
 //ngtson
+       String tenNV = emplnameTextfield.getText();
+        int MaNV = Integer.parseInt(emplidTextfield.getText());
+        String sdt = emplphoneTextfield.getText();
+        String diachi = empladdressTextfield.getText();
+        String calam = emplworktimeBox.getSelectedItem().toString(); 
+        suaNV(tenNV,MaNV,sdt,diachi,calam);
         
-        con = cn.getConnection();
-        try {
-            if(usernameTextfield.getText().equals("") 
-                    || useridcardTextfield.getText().equals("") 
-                    || userphoneTextfield.getText().equals("")
-                    || useraddressTextfield.getText().equals("")
-                    || usertimeTextfield.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Cần nhập đủ thông tin");
-                
-            }else{
-                Statement st = con.createStatement();
-                String sql = "Update HoiVien set Hoten ='"+usernameTextfield.getText()+
-                        "',sdt = '"+userphoneTextfield.getText()+
-                        "',diachi = '"+useraddressTextfield.getText()+
-                        "',ngaydk = '"+usertimeTextfield.getText()+"' where MaThe = '"+useridcardTextfield.getText() + "'";
-                st = con.createStatement();
-                int kq = st.executeUpdate(sql);
-                if (kq>=0){
-                    JOptionPane.showMessageDialog(this, "Cập nhật thành công");
-                    reloadTableHV();
-                }
-                st.close();
-                }
-            con.close();
-        }catch(Exception e) {
     }//GEN-LAST:event_usereditButtonActionPerformed
-    }
+    
     
     
     
@@ -1886,43 +2112,13 @@ public class Mainframe extends javax.swing.JFrame {
                 } 
             con.close();
         }catch(Exception e) {
-        } 
-        
-//        try {
-//            con = cn.getConnection();
-//            PreparedStatement pst = con.prepareStatement("Update NhanVien set tenNV=?,sdt=?,diachi=?,calam=? where MaNV=?");
-//            
-//            pst.setString(1, emplidTextfield.getText());
-//            pst.setString(2, emplnameTextfield.getText());
-//            pst.setString(3, emplphoneTextfield.getText());
-//            pst.setString(4, empladdressTextfield.getText());
-//            pst.setString(5, emplworktimeBox.getSelectedItem().toString());
-//            
-//            pst.executeUpdate();
-//            reloadTableNV();
-//            
-//        } catch (Exception e) {
-//        }
+        }  
     }//GEN-LAST:event_empleditButtonActionPerformed
 
+   
     private void empldeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empldeleteButtonActionPerformed
-//nut xoa nhan vien       
-//ngtson
-       con = cn.getConnection();
-        try {
-            String sql = "Delete NhanVien where tenNV ='"+emplnameTextfield.getText()+"'";
-            Statement stm = con.createStatement();
-            int check = JOptionPane.showConfirmDialog(this, "xác nhận xóa?","Thông báo",JOptionPane.YES_NO_OPTION);
-            if (check == JOptionPane.YES_OPTION){
-                stm.executeUpdate(sql);
-                reloadTableNV();
-                JOptionPane.showMessageDialog(this, "Đã xóa nhân viên khỏi danh sách");
-                
-            }
-            stm.close();
-            con.close();
-        } catch (Exception e) {
-        }
+        int MaNV = Integer.parseInt(emplidTextfield.getText());
+        xoaNV(MaNV);
     }//GEN-LAST:event_empldeleteButtonActionPerformed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
@@ -1981,8 +2177,38 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void timesearchTextfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_timesearchTextfieldKeyReleased
         String searchStringTG = timesearchTextfield.getText();
-        searchThe(searchStringTG);
+        searchTG(searchStringTG);
     }//GEN-LAST:event_timesearchTextfieldKeyReleased
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int x = jTable2.getSelectedRow();
+        if(x >= 0){
+            idcardTextfield.setText(jTable2.getValueAt(x,0) + "");
+            cardnameTextfield.setText(jTable2.getValueAt(x,1) + "");
+            cardphoneTextfield.setText(jTable2.getValueAt(x,2) + "");
+            cardlevelbox.setSelectedItem(jTable2.getValueAt(x,3)+"");
+            begindaySpinner.setValue(jTable2.getValueAt(x,4).toString() + "");
+            enddaySpinner.setValue(jTable2.getValueAt(x,5).toString() + "");
+            
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void timeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeTableMouseClicked
+        int x = timeTable.getSelectedRow();
+        if(x >= 0){
+            timeidcard.setText(timeTable.getValueAt(x,0) + "");
+            nameTextfield2.setText(timeTable.getValueAt(x,1) + "");
+            jComboBox2.setSelectedItem(timeTable.getValueAt(x,2).toString() + "");
+            begintimeSpinner.setValue(timeTable.getValueAt(x, 3).toString()+"");
+            endtimeSpinner.setValue(timeTable.getValueAt(x,4).toString()+"");
+            
+        } 
+        
+    }//GEN-LAST:event_timeTableMouseClicked
+
+    private void deleteusercardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteusercardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteusercardButtonActionPerformed
     
     
     
@@ -2127,7 +2353,7 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JTextField sumTextfield;
     private javax.swing.JTable timeTable;
     private javax.swing.JLabel timeidcard;
-    private javax.swing.JTextField timeidcardTextlield;
+    private javax.swing.JTextField timeidcardTextfield;
     private javax.swing.JLabel timename;
     private javax.swing.JButton timesearchButton;
     private javax.swing.JTextField timesearchTextfield;
