@@ -122,13 +122,13 @@ public class signinframe extends javax.swing.JFrame {
             pst.setString(2,jPasswordField1.getText());
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                 Mainframe m = new Mainframe();
-                 m.show();
-                 this.hide();
+                Mainframe m = new Mainframe();
+                m.show();
+                this.hide();
             }
             else{
-                 JOptionPane.showMessageDialog(this,"Sai thông tin đăng nhập");
-                 }
+                JOptionPane.showMessageDialog(this,"Sai thông tin đăng nhập");
+                }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(this, ex.toString());
         }

@@ -334,6 +334,55 @@ public class Mainframe extends javax.swing.JFrame {
         }
     }
     
+    public void xoaHV(String MaThe){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("delete from HoiVien where MaThe =?");
+            ps.setString(1, MaThe);
+            int rowCount = ps.executeUpdate();
+            int check = JOptionPane.showConfirmDialog(this,"xac nhan xoa?","thong bao",JOptionPane.YES_NO_OPTION);
+            if(check==JOptionPane.YES_OPTION){
+               if(rowCount==1){
+                JOptionPane.showMessageDialog(this, "da xoa hoi vien");
+                reloadTableHV();
+                }
+                else{
+                JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+                } 
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "xoa khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    public void suaHV(String hoten, String MaThe, String sdt, String diachi, String ngayDK){
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps = con.prepareStatement("update HoiVien set hoten=?,sdt=?,diachi=?,ngayDK=? where MaThe=?");
+            ps.setString(1, hoten);
+            
+            ps.setString(2,sdt);
+            ps.setString(3,diachi);
+            ps.setString(4,ngayDK);
+            ps.setString(5,MaThe);
+                
+            int rowCount = ps.executeUpdate();
+            if(rowCount==1){
+            JOptionPane.showMessageDialog(this, "da sua hoi vien");
+            reloadTableHV();
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "sua khong thanh cong");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "sua khong thanh cong");
+            e.printStackTrace();
+        }
+    }
+    
     public void themThe(int MaTheHV, String hoten, String sdt, String ngayDK, String ngayHH){
          try {
             con = cn.getConnection();
@@ -386,41 +435,13 @@ public class Mainframe extends javax.swing.JFrame {
     public void themTG(){}
     public void xoaTG(){}
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField4 = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -438,7 +459,6 @@ public class Mainframe extends javax.swing.JFrame {
         registertime = new javax.swing.JLabel();
         userdeleteButton = new javax.swing.JButton();
         usereditButton = new javax.swing.JButton();
-        usersaveButton = new javax.swing.JButton();
         useraddUserButton = new javax.swing.JButton();
         username = new javax.swing.JLabel();
         usernameTextfield = new javax.swing.JTextField();
@@ -513,7 +533,6 @@ public class Mainframe extends javax.swing.JFrame {
         emplworktime = new javax.swing.JLabel();
         empldeleteButton = new javax.swing.JButton();
         empleditButton = new javax.swing.JButton();
-        emplsaveButton = new javax.swing.JButton();
         empladdButton = new javax.swing.JButton();
         emplid = new javax.swing.JLabel();
         emplidTextfield = new javax.swing.JTextField();
@@ -551,6 +570,8 @@ public class Mainframe extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         salasearchTextfield = new javax.swing.JTextField();
         salasearchButton = new javax.swing.JButton();
+
+        jTextField4.setText("jTextField4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản Lý Phòng Gym");
@@ -663,6 +684,11 @@ public class Mainframe extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(60, 72, 107));
         jLabel6.setText("TÌM KIẾM");
 
+        usersearchTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersearchTextfieldActionPerformed(evt);
+            }
+        });
         usersearchTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 usersearchTextfieldKeyReleased(evt);
@@ -727,15 +753,6 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
-        usersaveButton.setBackground(new java.awt.Color(60, 72, 107));
-        usersaveButton.setForeground(new java.awt.Color(255, 255, 255));
-        usersaveButton.setText("Lưu");
-        usersaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usersaveButtonActionPerformed(evt);
-            }
-        });
-
         useraddUserButton.setBackground(new java.awt.Color(60, 72, 107));
         useraddUserButton.setForeground(new java.awt.Color(255, 255, 255));
         useraddUserButton.setText("Thêm Hội Viên");
@@ -788,15 +805,12 @@ public class Mainframe extends javax.swing.JFrame {
                             .addComponent(useraddressTextfield)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(usereditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(useraddUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(userdeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(86, 86, 86)
-                                .addComponent(usersaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(useraddUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userdeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -805,7 +819,7 @@ public class Mainframe extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(username)
                     .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(useridcard)
                     .addComponent(useridcardTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -822,9 +836,7 @@ public class Mainframe extends javax.swing.JFrame {
                     .addComponent(registertime)
                     .addComponent(usertimeTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userdeleteButton)
-                    .addComponent(usersaveButton))
+                .addComponent(userdeleteButton)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usereditButton)
@@ -1493,15 +1505,6 @@ public class Mainframe extends javax.swing.JFrame {
             }
         });
 
-        emplsaveButton.setBackground(new java.awt.Color(60, 72, 107));
-        emplsaveButton.setForeground(new java.awt.Color(255, 255, 255));
-        emplsaveButton.setText("Lưu");
-        emplsaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emplsaveButtonActionPerformed(evt);
-            }
-        });
-
         empladdButton.setBackground(new java.awt.Color(60, 72, 107));
         empladdButton.setForeground(new java.awt.Color(255, 255, 255));
         empladdButton.setText("Thêm Nhân Viên");
@@ -1558,9 +1561,7 @@ public class Mainframe extends javax.swing.JFrame {
                                     .addComponent(empleditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(empldeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(79, 79, 79)
-                                .addGroup(worktimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emplsaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(empladdButton)))
+                                .addComponent(empladdButton))
                             .addGroup(worktimeLayout.createSequentialGroup()
                                 .addGroup(worktimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(emplphoneTextfield)
@@ -1601,9 +1602,7 @@ public class Mainframe extends javax.swing.JFrame {
                     .addComponent(emplworktime)
                     .addComponent(emplworktimeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(worktimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(empldeleteButton)
-                    .addComponent(emplsaveButton))
+                .addComponent(empldeleteButton)
                 .addGap(18, 18, 18)
                 .addGroup(worktimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(empleditButton)
@@ -1897,10 +1896,6 @@ public class Mainframe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void usersaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersaveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usersaveButtonActionPerformed
-
    
     
     
@@ -1990,42 +1985,38 @@ public class Mainframe extends javax.swing.JFrame {
 //nut them nhan vien        
 //ngt son
 
-    try {
-            
-            Connection con = cn.getConnection();
-            PreparedStatement pst = con.prepareStatement("insert into NhanVien values(?,?,?,?,?)");
-            pst.setString(1, emplnameTextfield.getText());
-            pst.setString(2, emplidTextfield.getText());
-            pst.setString(3, emplphoneTextfield.getText());
-            pst.setString(4, empladdressTextfield.getText());
-            pst.setString(5, emplworktimeBox.getSelectedItem().toString());
-            
-            int check = pst.executeUpdate();
-            if(check>0){
-                JOptionPane.showMessageDialog(this, "them thanh cong");
-                reloadTableNV();
-            }
-            
-            
-            
-        } catch (Exception ex) {
-            System.out.println(ex.toString());
-        }
+//    try {
+//            
+//            Connection con = cn.getConnection();
+//            PreparedStatement pst = con.prepareStatement("insert into NhanVien values(?,?,?,?,?)");
+//            pst.setString(1, emplnameTextfield.getText());
+//            pst.setString(2, emplidTextfield.getText());
+//            pst.setString(3, emplphoneTextfield.getText());
+//            pst.setString(4, empladdressTextfield.getText());
+//            pst.setString(5, emplworktimeBox.getSelectedItem().toString());
+//            
+//            int check = pst.executeUpdate();
+//            if(check>0){
+//                JOptionPane.showMessageDialog(this, "them thanh cong");
+//                reloadTableNV();
+//            }
+//            
+//            
+//            
+//        } catch (Exception ex) {
+//            System.out.println(ex.toString());
+//        }
 //dung neu dung ham themNV();
-//    String tenNV = emplnameTextfield.getText();
-//    int MaNV = Integer.parseInt(emplidTextfield.getText());
-//    String sdt = emplphoneTextfield.getText();
-//    String diachi = empladdressTextfield.getText();
-//    String calam = emplworktimeBox.getSelectedItem().toString();
-//    
-//    themNV(tenNV,MaNV,sdt,diachi,calam);
+    String tenNV = emplnameTextfield.getText();
+    int MaNV = Integer.parseInt(emplidTextfield.getText());
+    String sdt = emplphoneTextfield.getText();
+    String diachi = empladdressTextfield.getText();
+    String calam = emplworktimeBox.getSelectedItem().toString();
+    
+    themNV(tenNV,MaNV,sdt,diachi,calam);
     }//GEN-LAST:event_empladdButtonActionPerformed
 
     
-    private void emplsaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emplsaveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emplsaveButtonActionPerformed
-
     
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 // in dl ra bang khach hang(jtable1)        
@@ -2044,12 +2035,12 @@ public class Mainframe extends javax.swing.JFrame {
     private void usereditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usereditButtonActionPerformed
 //nut sua khach hang        
 //ngtson
-       String tenNV = emplnameTextfield.getText();
-        int MaNV = Integer.parseInt(emplidTextfield.getText());
-        String sdt = emplphoneTextfield.getText();
-        String diachi = empladdressTextfield.getText();
-        String calam = emplworktimeBox.getSelectedItem().toString(); 
-        suaNV(tenNV,MaNV,sdt,diachi,calam);
+        String hoten = usernameTextfield.getText();
+        String MaThe = useridcardTextfield.getText();
+        String sdt = userphoneTextfield.getText();
+        String diachi = useraddressTextfield.getText();
+        String ngayDK = usertimeTextfield.getText();
+        suaHV(hoten,MaThe,sdt,diachi,ngayDK);
         
     }//GEN-LAST:event_usereditButtonActionPerformed
     
@@ -2059,24 +2050,8 @@ public class Mainframe extends javax.swing.JFrame {
     private void userdeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userdeleteButtonActionPerformed
 //nut xoa khach hang       
 //ngtson
-        con = cn.getConnection();
-        try {
-            String sql = "Delete HoiVien where MaThe ='"+useridcardTextfield.getText()+"'";
-            Statement st = con.createStatement();
-            int check = JOptionPane.showConfirmDialog(this, "xác nhận xóa?","Thông báo",JOptionPane.YES_NO_OPTION);
-            if (check == JOptionPane.YES_OPTION){
-                st.executeUpdate(sql);
-                reloadTableHV();
-                JOptionPane.showMessageDialog(this, "Đã xóa hội viên khỏi danh sách");
-                
-            }
-            st.close();
-            con.close();
-        } catch (Exception e) {
-        }
-        
-           
-           
+    String MaThe = useridcardTextfield.getText();
+    xoaHV(MaThe);
     }//GEN-LAST:event_userdeleteButtonActionPerformed
 
     private void emplworktimeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emplworktimeBoxActionPerformed
@@ -2085,34 +2060,13 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void empleditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleditButtonActionPerformed
 //nut sua nhan vien
-//ngtson not working
-        con = cn.getConnection();
-        try {
-            if(emplidTextfield.getText().equals("") 
-                    || emplnameTextfield.getText().equals("") 
-                    || emplphoneTextfield.getText().equals("")
-                    || empladdressTextfield.getText().equals("")
-                    || emplworktimeBox.getSelectedItem().toString().equals("")){
-                JOptionPane.showMessageDialog(this, "Cần nhập đủ thông tin");
-                
-            }else{
-                Statement st = con.createStatement();
-                String sqlUpdate = "Update NhanVien set MaNV ='"+emplidTextfield.getText()+
-                        "',sdt = '"+emplphoneTextfield.getText()+
-                        "',diachi = '"+empladdressTextfield.getText()+
-                        "',calam = '"+emplworktimeBox.getSelectedItem().toString()+
-                        "'where tenNV = '"+emplnameTextfield.getText() + "'";
-                st = con.createStatement();
-                int update = st.executeUpdate(sqlUpdate);
-                if (update>=0){
-                    JOptionPane.showMessageDialog(this, "Cập nhật thành công");
-                    reloadTableNV();
-                }
-                st.close();
-                } 
-            con.close();
-        }catch(Exception e) {
-        }  
+//ngtson 
+        String tenNV = emplnameTextfield.getText();
+        int MaNV =Integer.parseInt(emplidTextfield.getText());
+        String sdt = emplphoneTextfield.getText();
+        String diachi = empladdressTextfield.getText();
+        String calam = emplworktimeBox.getSelectedItem().toString();
+        suaNV(tenNV,MaNV,sdt,diachi,calam);
     }//GEN-LAST:event_empleditButtonActionPerformed
 
    
@@ -2183,12 +2137,12 @@ public class Mainframe extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         int x = jTable2.getSelectedRow();
         if(x >= 0){
-            idcardTextfield.setText(jTable2.getValueAt(x,0) + "");
+            timeidcardTextfield.setText(jTable2.getValueAt(x,0) + "");
             cardnameTextfield.setText(jTable2.getValueAt(x,1) + "");
             cardphoneTextfield.setText(jTable2.getValueAt(x,2) + "");
             cardlevelbox.setSelectedItem(jTable2.getValueAt(x,3)+"");
-            begindaySpinner.setValue(jTable2.getValueAt(x,4).toString() + "");
-            enddaySpinner.setValue(jTable2.getValueAt(x,5).toString() + "");
+            begindaySpinner.setValue(jTable2.getValueAt(x,4) + "");
+            enddaySpinner.setValue(jTable2.getValueAt(x,5) + "");
             
         }
     }//GEN-LAST:event_jTable2MouseClicked
@@ -2196,7 +2150,7 @@ public class Mainframe extends javax.swing.JFrame {
     private void timeTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeTableMouseClicked
         int x = timeTable.getSelectedRow();
         if(x >= 0){
-            timeidcard.setText(timeTable.getValueAt(x,0) + "");
+            timeidcardTextfield.setText(timeTable.getValueAt(x,0) + "");
             nameTextfield2.setText(timeTable.getValueAt(x,1) + "");
             jComboBox2.setSelectedItem(timeTable.getValueAt(x,2).toString() + "");
             begintimeSpinner.setValue(timeTable.getValueAt(x, 3).toString()+"");
@@ -2207,8 +2161,13 @@ public class Mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_timeTableMouseClicked
 
     private void deleteusercardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteusercardButtonActionPerformed
-        // TODO add your handling code here:
+        int MaThe = Integer.parseInt(idcardTextfield.getText());
+        xoaThe(MaThe);
     }//GEN-LAST:event_deleteusercardButtonActionPerformed
+
+    private void usersearchTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersearchTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersearchTextfieldActionPerformed
     
     
     
@@ -2276,7 +2235,6 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JTextArea emplnote;
     private javax.swing.JLabel emplphone;
     private javax.swing.JTextField emplphoneTextfield;
-    private javax.swing.JButton emplsaveButton;
     private javax.swing.JButton emplsearchButton;
     private javax.swing.JTextField emplsearchTextfield;
     private javax.swing.JLabel emplworktime;
@@ -2337,6 +2295,7 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField nameTextfield2;
     private javax.swing.JLabel note;
     private javax.swing.JLabel registertime;
@@ -2374,7 +2333,6 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JTextArea usernoteBox1;
     private javax.swing.JLabel userphone;
     private javax.swing.JTextField userphoneTextfield;
-    private javax.swing.JButton usersaveButton;
     private javax.swing.JButton usersearchButton;
     private javax.swing.JTextField usersearchTextfield;
     private javax.swing.JTextField usertimeTextfield;
